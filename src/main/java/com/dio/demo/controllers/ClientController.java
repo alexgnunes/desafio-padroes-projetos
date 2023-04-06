@@ -19,6 +19,12 @@ public class ClientController {
     public ResponseEntity<List<Client>> buscarTodos() {
         return ResponseEntity.ok(clientService.buscarTodos());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Client> buscarId(@PathVariable Integer id) {
+        return ResponseEntity.ok(clientService.buscarId(id));
+    }
+
     @PostMapping
     public ResponseEntity<Client> inserir(@RequestBody Client client){
         clientService.inserir(client);
