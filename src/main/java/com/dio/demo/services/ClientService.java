@@ -38,4 +38,8 @@ public class ClientService {
             clientRepository.save(clienteExistente);
         }
     }
+
+    public void deletar(Integer id) {
+        clientRepository.deleteById(id);
+    }
 }

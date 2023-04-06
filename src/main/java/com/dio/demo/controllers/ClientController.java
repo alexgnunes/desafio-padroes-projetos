@@ -36,4 +36,10 @@ public class ClientController {
         clientService.atualizar(id, client);
         return ResponseEntity.ok(client);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Client> atualizar(@PathVariable Integer id){
+        clientService.deletar(id);
+        return ResponseEntity.ok().build();
+    }
 }
