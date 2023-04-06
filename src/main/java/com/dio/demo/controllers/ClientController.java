@@ -30,4 +30,10 @@ public class ClientController {
         clientService.inserir(client);
         return ResponseEntity.ok(client);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Client> atualizar(@PathVariable Integer id, @RequestBody Client client){
+        clientService.atualizar(id, client);
+        return ResponseEntity.ok(client);
+    }
 }

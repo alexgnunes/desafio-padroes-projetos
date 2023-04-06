@@ -19,7 +19,7 @@ public class ClientService {
     public List<Client> buscarTodos() {
         return clientRepository.findAll();
     }
-
+    @Transactional(readOnly = true)
     public Client buscarId(Integer id) {
         Optional<Client> cliente = clientRepository.findById(id);
         return cliente.get();
@@ -28,6 +28,14 @@ public class ClientService {
     public void inserir(Client client) {
         clientRepository.save(client);
     }
-
-
+    @Transactional
+    public void atualizar(Integer id, Client client) {
+        Optional<Client> entidade = clientRepository.findById(id);
+        if (entidade.isPresent()) {
+            Client clienteExistente = entidade.get();
+            clienteExistente.setNome(client.getNome());
+            clienteExistente.setIdade(client.getIdade());
+            clientRepository.save(clienteExistente);
+        }
+    }
 }
